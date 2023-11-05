@@ -1,0 +1,43 @@
+\documentclass[fontsize=12pt,paper=a4,twoside,toc=listof,toc=bib]{scrreprt}
+
+\input{config}
+\addbibresource{citations.bib}
+
+\begin{document}
+    \pagestyle{plain}
+    \pagenumbering{gobble}
+    % Head
+    \input{contents/00_Allgemein/00_01_Startseite}
+    \cleardoubleevenpage
+    \input{contents/00_Allgemein/00_02_Eidesstattliche_Erklärung}
+    \cleardoubleevenpage
+    \input{contents/00_Allgemein/00_03_Abstract}
+    \cleardoubleoddpage
+    \input{contents/00_Allgemein/00_04_Inhaltsverzeichnis}
+    \cleardoubleevenpage
+    \input{contents/00_Allgemein/00_05_Abkuerzungsverzeichnis}
+    \addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+    % Main content
+    \cleardoubleevenpage
+
+    % Odd pages on right, not left
+    \let\tmp\oddsidemargin
+    \let\oddsidemargin\evensidemargin
+    \let\evensidemargin\tmp
+    \reversemarginpar
+
+    \pagenumbering{arabic}
+    \input{contents/01_Einleitung/01_Einleitung}
+    \input{contents/02_Test_Kapitel/02_Test_Kapitel}
+    \input{contents/03_Drittes_Kapitel/03_00_Drittes_Kapitel}
+    % Appendix
+    \appendix
+    \cleardoubleevenpage
+    \input{contents/A_Erster_Anhang/A_Erster_Anhang}
+    % References
+    \cleardoubleevenpage
+    \printbibliography
+    \cleardoubleevenpage
+    \listoffigures
+    \listoftables
+\end{document}

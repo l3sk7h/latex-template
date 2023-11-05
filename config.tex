@@ -1,0 +1,88 @@
+% Debugging
+%\usepackage{showframe}
+
+% Encoding
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Language
+\usepackage[ngerman]{babel}
+\usepackage[autostyle,german=quotes]{csquotes}
+\MakeInnerQuote{"}
+
+% Hyphenation
+\hyphenation{Con-vo-lu-tion-al}
+
+% Formatting
+\raggedbottom
+\setlength{\textheight}{0.77\paperheight}
+\counterwithout{footnote}{chapter}
+\usepackage[onehalfspacing]{setspace}
+\usepackage{scrextend}
+\addtokomafont{labelinglabel}{\sffamily}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+
+% Appendix
+% Prefix and title on same line, see https://tex.stackexchange.com/questions/340995/appendix-a-in-chapter-title-but-on-one-line
+\providecommand*\appendixmore{}
+\renewcommand*\appendixmore{%
+    \renewcommand*{\chapterformat}{%
+        \mbox{\appendixname~\thechapter\autodot:\enskip}%
+    }%
+}
+
+% Tables
+\usepackage{tabularx}
+\usepackage{diagbox}
+\newcommand\tikzmark[2][]{
+    \tikz[remember picture,inner sep=\tabcolsep,outer sep=0,baseline=(#1.base),align=left]{\node[minimum width=\hsize](#1){$#2$};}
+}
+\usepackage{multirow}
+\usepackage{multicol}
+
+% Images
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+
+% Code
+\usepackage{listings}
+\lstset{
+    basicstyle=\footnotesize\ttfamily,
+    breaklines=true,
+    numbers=left,
+    numberstyle=\scriptsize,
+    string=[s]{"}{"},
+    stringstyle=\color{blue},
+    comment=[l]{:},
+    commentstyle=\color{black},
+}
+\usepackage{dirtree}
+\usepackage{fontspec}
+% \setmonofont{Consolas}
+
+% Bibliography
+\usepackage[backend=biber,sorting=none,date=long,urldate=long]{biblatex}
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+
+% https://stackoverflow.com/questions/2785260/hide-an-entry-from-toc-in-latex
+\newcommand{\nocontentsline}[3]{}
+\newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
+
+% References
+\usepackage[colorlinks=true,citecolor=black,urlcolor=black,linkcolor=black]{hyperref}
+\usepackage{cleveref}
+\usepackage[format=plain,justification=centering,singlelinecheck=false]{caption}
+\usepackage{subcaption}
+
+% Color definitions
+\usepackage{xcolor}
+\usepackage{colortbl}
+\definecolor{background}{HTML}{FFFFFF}
+\definecolor{delim}{RGB}{20,105,176}
+\definecolor{punct}{HTML}{000000}
+\definecolor{numb}{RGB}{0,0,255}
